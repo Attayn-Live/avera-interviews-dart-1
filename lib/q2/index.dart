@@ -5,6 +5,25 @@ class Book {
   final String author;
   final String genre;
   final int year;
+
+  @override
+  String toString() => "Book < $title, $author, $genre, $year >";
+
+  @override
+  int get hashCode => Object.hash(
+    title.hashCode,
+    author.hashCode,
+    genre.hashCode,
+    year.hashCode,
+  );
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is Book &&
+            runtimeType == other.runtimeType &&
+            hashCode == other.hashCode;
+  }
 }
 
 class BookLibrary {
